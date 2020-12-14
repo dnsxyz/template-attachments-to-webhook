@@ -5,7 +5,7 @@ You can use this template to setup a workflow that listens in to incoming email 
 ## Workflow
 
 ```yml
-version: '0.1'
+version: "0.1"
 addresses:
   address@mailscript.com:
     keys:
@@ -31,7 +31,7 @@ workflows:
             {
               "attachments": "{{msg.attachments}}"
             }
-          url: 'https://endpoint.url'
+          url: "https://endpoint.url"
           opts:
             headers:
               Content-Type: application/json
@@ -57,6 +57,7 @@ Example usage to read payload:
 
 ```js
 const express = require("express")
+const fs = require("fs")
 
 const handler = async (req, res) => {
   const { attachments } = req.body
@@ -65,7 +66,6 @@ const handler = async (req, res) => {
     const path = `./files/${filename}`
     fs.writeFileSync(path, Buffer.from(content))
   }
-
   res.status(200).send({ status: "ok" })
 }
 
