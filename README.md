@@ -46,7 +46,8 @@ mailscript workflows:add \
   --name "attachments to webhook" \
   --trigger address@mailscript.com \
   --action webhook \
-  --webhook "https://endpoint.url" body ./body.json
+  --webhook "https://endpoint.url" \
+  --body ./body.json
 ```
 
 ## Read from request
