@@ -70,5 +70,5 @@ const handler = async (req, res) => {
 }
 
 const app = express()
-app.post("/", cors(), express.json(), handler)
+app.post("/", express.json(), handler)
 ```
