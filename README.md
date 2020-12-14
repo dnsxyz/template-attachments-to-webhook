@@ -4,7 +4,7 @@ You can use this template to setup a workflow that listens in to incoming email 
 
 ## Workflow
 
-```sh
+```yml
 version: '0.1'
 addresses:
   address@mailscript.com:
