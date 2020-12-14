@@ -22,7 +22,8 @@ workflows:
     trigger:
       accessory: address@mailscript.com
       config:
-        criterias: []
+        criterias:
+          - hasAttachments: true
     actions:
       - config:
           type: webhook
