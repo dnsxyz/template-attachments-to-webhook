@@ -5,7 +5,7 @@ You can use this template to setup a workflow that listens in to incoming email 
 ## Workflow
 
 ```yml
-version: "0.1"
+version: "0.2"
 addresses:
   address@mailscript.com:
     keys:
@@ -19,23 +19,27 @@ accessories:
     key: owner
 workflows:
   - name: attachments
-    trigger:
-      accessory: address@mailscript.com
-      config:
-        criterias:
-          - hasAttachments: true
-    actions:
-      - config:
-          type: webhook
-          body: |
-            {
-              "attachments": "{{msg.attachments}}"
-            }
-          url: "https://endpoint.url"
-          opts:
-            headers:
-              Content-Type: application/json
-            method: POST
+    trigger: attachments-trigger
+    action: attachments-webhook-action
+triggers:
+  - name: attachments-trigger
+    accessory: address@mailscript.com
+    config:
+      criterias:
+        - hasAttachments: true
+actions:
+  - name: attachments-webhook-action
+    config:
+    type: webhook
+    body: |
+      {
+        "attachments": "{{msg.attachments}}"
+      }
+    url: "https://endpoint.url"
+    opts:
+      headers:
+        Content-Type: application/json
+      method: POST
 ```
 
 ## Manual setup
